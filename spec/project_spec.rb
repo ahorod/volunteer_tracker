@@ -56,4 +56,17 @@ describe(Project) do
       expect(Project.all()).to(eq([project2]))
     end
   end
+
+  describe("#volunteers") do
+    it("returns all of the volunteers in a project") do
+      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project.save()
+      tommy = Volunteer.new({:name => "Tommy Jones", :id => nil})
+      tommy.save()
+      marge = Volunteer.new({:name => "Marge Smith", :id => nil})
+      marge.save()
+      project.update({:volunteer_ids => [tommy.id(), marge.id()]})
+      expect(project.volunteers()).to(eq([tommy, marge]))
+    end
+  end
 end
