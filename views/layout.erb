@@ -6,19 +6,23 @@
     <link rel='stylesheet' href='../css/styles.css'>
   </head>
   <body>
-    <div class="container">
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title">Volunteer Tracker</h3>
+    <div class="container-fluid">
+        <div class="panel-title panel">
+          <h1>Volunteer Tracker</h1>
         </div>
+    </div>
+    <br>
+    <div class="container-fluid">
+      <div class="panel panel-custom">
         <div class="panel-body">
-          <%= yield %>
+            <%= yield %>
         </div>
       </div>
       <a href="/">Home</a><br>
       <form action="/clear_all" method="post">
         <button type="submit" name="clear_all">Clear Database</button>
       </form>
+    </div>
     </div>
   </body>
 </html>
