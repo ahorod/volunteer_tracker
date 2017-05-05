@@ -1,5 +1,6 @@
 class Project
-  attr_reader(:name,:info,:id)
+  attr_accessor(:name,:info)
+  attr_reader(:id)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)

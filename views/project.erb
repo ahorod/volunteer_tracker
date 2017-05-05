@@ -1,0 +1,45 @@
+<div class="col-md-6">
+  <h2>Project: <%= @project.name() %></h2>
+  <h4>Description <%= @project.info() %></h4>
+  <br>
+  <% if @project.volunteers().any?() %>
+    <h4>Volunteers:</h4>
+      <ul>
+        <%@project.volunteers().each() do |volunteer|%>
+          <li><%= volunteer.name()%></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+<div class="col-md-6">
+  <form action="/projects/<%= @project.id() %>" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <div class="form-group">
+      <label for="name">name</label>
+      <input class="form-control" type="text" name="name">
+    </div>
+    <div class="form-group">
+      <label for="info">Description</label>
+      <input class="form-control" type="text" name="info">
+    </div>
+
+    <h4>Volunteers</i></h4>
+    <% @volunteers.each() do |volunteer| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="volunteer_ids[]" value="<%= volunteer.id() %>"><%= volunteer.name()%>
+        </label>
+      </div>
+    <% end %>
+    <div class="btn-group">
+      <button class="btn btn-success" type="submit">Update Project</button>
+    </div>
+  </form>
+  <br>
+  <form class="float" action="/projects/<%= @project.id() %>" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <div class="btn-group float">
+      <button class="btn btn-success" type="submit">Delete Project</button>
+    </div>
+  </form>
+</div>

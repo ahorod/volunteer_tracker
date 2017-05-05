@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-6">
+    <h4>Projects</h4>
+    <ul>
+      <% @projects.each() do |project| %>
+        <li><a href="/projects/<%= project.id() %>"><%= project.name() %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h4>Volunteers</h4>
+    <ul>
+      <% @volunteers.each() do |volunteer| %>
+        <li><a href="/volunteers/<%= volunteer.id() %>"><%= volunteer.name() %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <form action="/add_project" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name">
+      </div>
+      <div class="form-group">
+        <label for="info">Description</label>
+        <input class="form-control" type="text" name="info">
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-success" type="submit">Add Project</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <form action="/add_volunteer" method="post">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name">
+      </div>
+      <div class="btn-group">
+        <button class="btn btn-success" type="submit">Add Volunteer</button>
+      </div>
+    </form>
+  </div>
+</div>

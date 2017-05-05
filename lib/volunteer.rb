@@ -1,5 +1,6 @@
 class Volunteer
-  attr_reader(:name, :id)
+  attr_accessor(:name)
+  attr_reader(:id)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
