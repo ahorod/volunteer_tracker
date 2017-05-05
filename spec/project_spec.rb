@@ -34,6 +34,16 @@ describe(Project) do
       project.update({:name => "Liguria trails lake Dolce"})
       expect(project.name()).to(eq("Liguria trails lake Dolce"))
     end
+    it("lets you add a volunteer to a project") do
+      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project.save()
+      tommy = Volunteer.new({:name => "Tommy Jones", :id => nil})
+      tommy.save()
+      marge = Volunteer.new({:name => "Marge Smith", :id => nil})
+      marge.save()
+      project.update({:volunteer_ids => [tommy.id(), marge.id()]})
+      expect(project.volunteers()).to(eq([tommy, marge]))
+    end
   end
 
   describe("#delete") do
