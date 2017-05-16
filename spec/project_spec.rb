@@ -11,7 +11,7 @@ describe(Project) do
 
   describe(".find") do
     it("returns a project by its ID number") do
-      test_project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      test_project = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
       test_project.save()
       test_project2 = Project.new({:name => "Short Beach cleenup", :info => "Remove trash from the sand", :id => nil})
       test_project2.save()
@@ -21,21 +21,21 @@ describe(Project) do
 
   describe("#==") do
     it("is the same project if it has the same name and id") do
-      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
-      project2 = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
+      project2 = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
       expect(project).to(eq(project2))
     end
   end
 
   describe("#update") do
     it("lets you update projects in the database") do
-      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
       project.save()
-      project.update({:name => "Liguria trails lake Dolce"})
-      expect(project.name()).to(eq("Liguria trails lake Dolce"))
+      project.update({:name => "Tanzania trails lake Dolce"})
+      expect(project.name()).to(eq("Tanzania trails lake Dolce"))
     end
     it("lets you add a volunteer to a project") do
-      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
       project.save()
       tommy = Volunteer.new({:name => "Tommy Jones", :id => nil})
       tommy.save()
@@ -48,7 +48,7 @@ describe(Project) do
 
   describe("#delete") do
     it("lets you delete a project from the database") do
-      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
       project.save()
       project2 = Project.new({:name => "Short Beach cleenup", :info => "Build trails in the forest", :id => nil})
       project2.save()
@@ -59,7 +59,7 @@ describe(Project) do
 
   describe("#volunteers") do
     it("returns all of the volunteers in a project") do
-      project = Project.new({:name => "Liguria trails", :info => "Build trails in the forest", :id => nil})
+      project = Project.new({:name => "Tanzania trails", :info => "Build trails in the forest", :id => nil})
       project.save()
       tommy = Volunteer.new({:name => "Tommy Jones", :id => nil})
       tommy.save()

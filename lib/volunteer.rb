@@ -18,12 +18,24 @@ class Volunteer
     volunteers
   end
 
+
   define_singleton_method(:find) do |id|
     result = DB.exec("SELECT * FROM volunteers WHERE id = #{id};")
     name = result.first().fetch("name")
     Volunteer.new({:name => name, :id => id})
   end
 
+  define_singleton_method(:free) do
+    free_volunteer = Volunteer.all().delete_if {|volunteer| volunteer.is_assigned() }
+  end
+
+  define_method(:is_assigned) do
+    results = DB.exec("SELECT * FROM assignments WHERE volunteer_id = #{self.id()};")
+    results.each() do |result|
+      return true
+    end
+    return false
+  end
 
   define_method(:save) do
     result = DB.exec("INSERT INTO volunteers (name) VALUES ('#{@name}') RETURNING id;")
